@@ -16,7 +16,7 @@ export default function TodoItem({ todo, onUpdate, onDelete }) {
         checked={todo.isDone}
         onChange={onChangeCheckbox}
       />
-      <div className="content">{todo.content}</div>
+      <div className="content" onClick={onChangeCheckbox}>{todo.content}</div>
       <div className="date">
         {new Date(todo.createdAt).toLocaleDateString("ko")}
       </div>

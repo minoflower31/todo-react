@@ -8,10 +8,12 @@
 
 .TodoItem input {
   width: 20px;
+  cursor: pointer;
 }
 
 .TodoItem .content {
   flex: 1;
+  cursor: pointer;
 }
 
 .TodoItem .date {
