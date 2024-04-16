@@ -22,17 +22,20 @@ export default function TodoList({ todos, onUpdate, onDelete }) {
   return (
     <div className="TodoList">
       <h4>Todos</h4>
-      <input
-        value={search}
-        onChange={onChangeSearch}
-        placeholder="검색어를 입력하세요."
-      />
+      <div className="search-wrapper">
+        <input
+            value={search}
+            onChange={onChangeSearch}
+            placeholder="검색어를 입력하세요."
+        />
+        <i className="fa fa-search icon"></i>
+      </div>
       <div className="todos_wrapper">
         {filterTodos().map((todo) => (
-          <TodoItem
-            key={todo.id}
-            todo={todo}
-            onUpdate={onUpdate}
+            <TodoItem
+                key={todo.id}
+                todo={todo}
+                onUpdate={onUpdate}
             onDelete={onDelete}
           />
         ))}

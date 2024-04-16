@@ -16,6 +16,11 @@
   cursor: pointer;
 }
 
+.TodoItem .checked {
+  color: darkgray;
+  text-decoration: line-through;
+}
+
 .TodoItem .date {
   font-size: 14px;
   color: gray;
