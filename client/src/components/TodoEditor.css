@@ -8,6 +8,7 @@
   padding: 15px;
   border: 1px solid rgb(220, 220, 220);
   border-radius: 5px;
+  outline-color: #1f93ff;
 }
 
 .TodoEditor button {
