@@ -2,6 +2,12 @@
 
 }
 
+.TodoList .todo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .TodoList .search-wrapper {
   position: relative;
 }
@@ -31,4 +37,19 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.TodoList .todo-state {
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.TodoList .todo-state > div:not(:last-child) {
+  padding-right: 15px;
+  border-right: 1px solid gray;
+}
+
+.TodoList .todo-state span {
+  font-weight: bold;
 }
