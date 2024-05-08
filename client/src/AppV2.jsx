@@ -1,9 +1,9 @@
-import { useMemo, useReducer, useRef, useState } from "react";
+import {useCallback, useMemo, useReducer, useRef, useState} from "react";
 import "./App.css";
 import Header from "./components/Header.jsx";
 import TodoEditor from "./components/TodoEditor.jsx";
 import TodoList from "./components/TodoList.jsx";
-import { TodoStateContext, TodoDispatchContext } from "./TodoContext.jsx";
+import {TodoStateContext, TodoDispatchContext} from "./TodoContext.jsx";
 
 const mockData = [
   {
@@ -33,7 +33,7 @@ function reducer(state, action) {
     }
     case "UPDATE": {
       return state.map((it) =>
-        it.id === action.data ? { ...it, isDone: !it.isDone } : it,
+          it.id === action.data ? {...it, isDone: !it.isDone} : it,
       );
     }
     case "DELETE": {
@@ -46,7 +46,7 @@ function AppV2() {
   const [todos, dispatch] = useReducer(reducer, mockData);
   const idRef = useRef(3);
 
-  const onCreate = (content) => {
+  const onCreate = useCallback((content) => {
     dispatch({
       type: "CREATE",
       data: {
@@ -56,21 +56,21 @@ function AppV2() {
         createdAt: new Date().getTime(),
       },
     });
-  };
+  }, []);
 
-  const onUpdate = (targetId) => {
+  const onUpdate = useCallback((targetId) => {
     dispatch({
       type: "UPDATE",
       data: targetId,
     });
-  };
+  }, []);
 
-  const onDelete = (targetId) => {
+  const onDelete = useCallback((targetId) => {
     dispatch({
       type: "DELETE",
       data: targetId,
     });
-  };
+  }, []);
 
   const memoizedDispatches = useMemo(() => {
     return {
@@ -78,18 +78,18 @@ function AppV2() {
       onUpdate,
       onDelete,
     };
-  });
+  }, []);
 
   return (
-    <div className="App">
-      <Header />
-      <TodoStateContext.Provider value={todos}>
-        <TodoDispatchContext.Provider value={memoizedDispatches}>
-          <TodoEditor />
-          <TodoList />
-        </TodoDispatchContext.Provider>
-      </TodoStateContext.Provider>
-    </div>
+      <div className="App">
+        <Header/>
+        <TodoStateContext.Provider value={todos}>
+          <TodoDispatchContext.Provider value={memoizedDispatches}>
+            <TodoEditor/>
+            <TodoList/>
+          </TodoDispatchContext.Provider>
+        </TodoStateContext.Provider>
+      </div>
   );
 }
 

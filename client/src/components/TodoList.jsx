@@ -35,7 +35,7 @@ export default function TodoList() {
       doneCount,
       notDoneCount,
     };
-  }, [todos]);
+  }, [todos]); // deps 인자로 들어가는 값은 해당 값만 변경될 때 업데이트하겠다는 의미
 
   return (
       <div className="TodoList">

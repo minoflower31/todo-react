@@ -1,8 +1,8 @@
 import "./TodoItem.css";
-import { useContext } from "react";
+import {memo, useContext} from "react";
 import { TodoDispatchContext } from "../TodoContext.jsx";
 
-export default function TodoItem({ todo }) {
+function TodoItem({ todo }) {
   const { onUpdate, onDelete } = useContext(TodoDispatchContext);
 
   const onChangeCheckbox = () => {
@@ -33,3 +33,5 @@ export default function TodoItem({ todo }) {
     </div>
   );
 }
+
+export default memo(TodoItem);
